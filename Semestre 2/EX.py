@@ -16,10 +16,10 @@ def cria_indices():
 
 def forca_opcao(msg, lista_opcoes):
     opcoes = '\n'.join(lista_opcoes)
-    opcao = input(f'{msg}\n{opcoes}\n')
+    opcao = input(f'{msg}\n{opcoes}\n->')
     while not opcao in lista_opcoes:
         print('Invalido!')
-        opcao = input(f'{msg} \n{opcoes}\n')
+        opcao = input(f'{msg} \n{opcoes}\n->')
     return opcao
 
 
@@ -31,6 +31,11 @@ def cadastro_endereco():
             carrinho['Endereço']= endereco.json()
             carrinho['Endereço']['Nª'] = input('Numero da residencia: \n->')
             carrinho['Endereço']['Complemento'] = input('Complemento: \n ->')
+            break
+        else:
+            print('CEP invalido')
+        return
+
 
 def add_prod():
     global indices
@@ -72,11 +77,11 @@ def verifica_numero(msg):
 
 
 def comprar():
-    item = forca_opcao('Qual item você quer comprar?\n->', acougue['Carnes'])
+    item = forca_opcao('Qual item você quer comprar?', acougue['Carnes'])
     indice_item = indices[item]
     for key in acougue.keys():
         print(f'{key}: {acougue[key][indice_item]}')
-    continuar = forca_opcao('Você quer levar?',['sim', 'nao'])
+    continuar = forca_opcao(f'Você quer levar {item}?',['sim', 'nao'])
     if continuar == 'nao':
         return
     qtd = verifica_numero(f'Quantos kg de {item}? \n->')
@@ -117,21 +122,20 @@ while True:
         continuar = forca_opcao('Você deseja realizar outras operações?',['sim','nao'])
         if continuar == 'nao':
             break
-        else:
-            comprar()
-            encerrar = forca_opcao('Encerrar a compra ou ver mais itens?',['encerrar', 'continuar'])
-            if encerrar == 'encerrar':
-                print(carrinho)
-                break
+    else:
+        cadastro_endereco()
+        comprar()
+        encerrar = forca_opcao('Encerrar a compra ou ver mais itens?',['encerrar', 'continuar'])
+        if encerrar == 'encerrar':
+            print(f"voce vai levar {list(carrinho['Itens'].keys())[0]} na {carrinho['Endereço']['localidade']}")
+            print(carrinho)
+            break
 
 
 '''for key in carrinho['Endereço'].keys():
     info = input(f'Diga o/z {key}: \n->')
     carrinho['Endereço'][key] = info'''
 
-
-comprar()
-print(carrinho)
 
 '''atualizar()
 print('-'*20)
