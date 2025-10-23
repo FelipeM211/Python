@@ -72,6 +72,24 @@ def raiz_binaria_recursiva(num,ini =0,fim = 0):
         chute = raiz_binaria_recursiva(num,ini,fim)
     return  chute
 
+def forca_opcao(msg,conjunto_opcoes):
+    opcoes = '\n'.join(conjunto_opcoes)
+    escolha = input(f'{msg}\n{opcoes}\n->')
+    while not escolha in conjunto_opcoes:
+        escolha = input(f'{msg}\n{opcoes}\n->')
+    return escolha
+
+
+def forca_opcao_recursiva(msg, conjunto_opcoes):
+    opcoes = '\n'.join(conjunto_opcoes)
+    escolha = input(f'{msg}\n{opcoes}\n-> ')
+    if escolha in conjunto_opcoes:
+        return escolha
+    else:
+        print("Opção inválida! Tente novamente.")
+        return forca_opcao(msg, conjunto_opcoes)
+
+
 print(raiz_binaria_recursiva(20))
 '''num = verifica_numero_recursivo('Digite um numero \n->')
 chute = busca_binaria(num)
