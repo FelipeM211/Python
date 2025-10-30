@@ -1,0 +1,37 @@
+{
+    "Paradinha": [
+        "Trembolona",
+        "Durateston",
+        "Masteron",
+        "Clembuterol",
+        "Deca"
+    ],
+    "Preco": [
+        120,
+        1500,
+        300,
+        100,
+        30.0
+    ],
+    "Dose (mg)": [
+        150,
+        250,
+        200,
+        5,
+        "4"
+    ],
+    "Estoque": [
+        3,
+        10,
+        8,
+        12,
+        17
+    ],
+    "Colateral": [
+        "Muito",
+        "Calvice",
+        "Acne",
+        "Ansiedade",
+        "Tristeza"
+    ]
+}
