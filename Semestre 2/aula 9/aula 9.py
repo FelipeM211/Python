@@ -1,4 +1,4 @@
-'''import requests
+import requests
 import pandas as pd
 import json
 with open('data.json','r+') as file:
